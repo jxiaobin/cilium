@@ -134,6 +134,7 @@ func getFeedRule(name, args string) []string {
 // skipping netfilter conntrack).
 func skipPodToPodConntrack(ipv6 bool) bool {
 	return !ipv6 && option.Config.EnableIPv4 &&
+		option.Config.InstallNoConntrackIptRules &&
 		option.Config.Tunnel == option.TunnelDisabled &&
 		option.Config.IPv4NativeRoutingCIDR() != nil &&
 		option.Config.KubeProxyReplacementIsRunningStrict()
